@@ -1,0 +1,33 @@
+{% extends 'notices/base.html' %}
+{% load static %}
+
+{% block page_name %}
+  {{ cat_name }}-Notices
+{% endblock %}
+
+{% block title %}{{ cat_name }}-Notices{% endblock %}
+
+
+
+{% block content %}
+  <hr />
+  {% if notice_list %}
+    {% for notice in notice_list %}
+    <div class="col-sm-4">
+      <div class="card text-white bg-primary mb-4 mt-3" style="width: 18rem">
+        <div class="card-body">
+            <h5 class="card-title">{{ notice.subject}}</h5>
+            <hr/>
+            <p class="card-text">{{ notice.publishedDate|date:"Y-m-d" }}</p>
+            <hr>
+            <a href="{% url 'notices:notice' notice.id %}" class="btn btn-light">View Details</a>
+        </div>
+      </div>
+    </div>  
+    {% endfor %}
+  {% else %}
+    <h3>There are no notices now.</h3>
+  {% endif %}
+  
+
+{% endblock %}

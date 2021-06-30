@@ -1,0 +1,29 @@
+{% extends 'notices/base.html' %}
+{% load static %}
+
+{% block page_name %}
+  Notice Detail
+{% endblock %}
+
+{% block title %}Notice Detail{% endblock %}
+
+
+
+{% block content %}
+  <div class="card text-center">
+  <div class="card-header">
+    <h3>Notice Detail</h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ notice_detail.subject }}</h5>
+    <p class="card-text">{{ notice_detail.body }}</p>
+    
+  </div>
+  <div class="card-footer text-muted">
+    {{ notice_detail.publishedDate }}
+  </div>
+  <a href="{% url 'notices:home' %}" class="btn btn-primary">Back To HomePage</a>
+</div>
+  
+
+{% endblock %}

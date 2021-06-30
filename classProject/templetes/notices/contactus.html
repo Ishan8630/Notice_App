@@ -1,0 +1,18 @@
+{% extends 'notices/base.html' %}
+{% load static %}
+
+{% block page_name %}
+  Contact_Page
+{% endblock %}
+
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+	{% if msg_form %}
+		<form method="POST" action="{% url 'notices:contactus' %}">
+			{% csrf_token %}
+			{{ msg_form.as_p }}
+			<button type="submit" class="btn btn-primary">Submit</button>
+			
+		</form>
+	{% endif %}	
+{% endblock %}

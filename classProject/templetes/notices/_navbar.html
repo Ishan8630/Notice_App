@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">KCT Notices</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <a class="nav-link 
+          {% if request.resolver_match.view_name == 'notices:home' %}
+          active
+          {% endif %}" 
+          aria-current="page" href="{% url 'notices:home' %}">Home</a>
+        </li>
+
+       
+
+
+        {% for category in categories %}
+
+        <li class="nav-item">
+          <a class="nav-link 
+          
+          {% if request.resolver_match.kwargs.cat_id == category.id %}
+          active
+          {% endif %}" 
+
+           href="{% url 'notices:category' category.id %}">{{category.name}}</a>
+        </li>
+          
+        {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'notices:home' %}">Notice List </span></a>
+            {% for category in categories %}
+                  <a class="nav-link" href="{% url 'notices:category' category.id %}"> {{ category.name }}</a>
+            {% endfor %}  
+          </div>
+        </div>
+      </nav> -->
